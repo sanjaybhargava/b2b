@@ -52,10 +52,10 @@ export default function Navigation() {
               About
             </Link>
             <Link
-              href="/case-study"
+              href="/case-studies"
               className="text-base font-medium text-gray-600 hover:text-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 rounded-md px-2 py-1 transition-colors"
             >
-              Case Study
+              Case Studies
             </Link>
             <Link
               href="/faq"
@@ -68,6 +68,12 @@ export default function Navigation() {
               className="px-6 py-2.5 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all duration-200 shadow-md hover:shadow-lg"
             >
               Book a Demo
+            </Link>
+            <Link
+              href="/login"
+              className="px-6 py-2.5 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-all duration-200 shadow-md hover:shadow-lg"
+            >
+              Login
             </Link>
           </div>
 
@@ -117,11 +123,11 @@ export default function Navigation() {
                 About
               </Link>
               <Link
-                href="/case-study"
+                href="/case-studies"
                 className="text-lg font-medium text-gray-700 hover:text-emerald-600 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Case Study
+                Case Studies
               </Link>
               <Link
                 href="/faq"
@@ -136,6 +142,13 @@ export default function Navigation() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Book a Demo
+              </Link>
+              <Link
+                href="/login"
+                className="px-6 py-3 bg-gray-900 text-white rounded-lg font-semibold text-center shadow-lg hover:bg-gray-800 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Login
               </Link>
             </div>
           </div>

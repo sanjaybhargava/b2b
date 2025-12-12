@@ -11,8 +11,8 @@ export default function Footer() {
             <div className="space-y-3 text-sm text-gray-400">
               <p>
                 <strong className="text-gray-300">Email:</strong>{" "}
-                <a href="mailto:prachi@bharosaclub.com" className="hover:text-emerald-400 transition-colors">
-                  prachi@bharosaclub.com
+                <a href="mailto:prachi@bharosa.finance" className="hover:text-emerald-400 transition-colors">
+                  prachi@bharosa.finance
                 </a>
               </p>
               <p>
