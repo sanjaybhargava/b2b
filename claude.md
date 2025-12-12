@@ -1,6 +1,6 @@
 # B2B Website Development Session Notes
 
-**Date:** December 11, 2025
+**Last Updated:** December 12, 2025
 **Project:** Bharosa Technoserve B2B Advisory Platform
 **Location:** `/Users/sanjaybhargava/b2b`
 
@@ -11,16 +11,42 @@
 Built a B2B website for wealth management advisors (Banks, MFDs, RIAs) using Next.js with a professional sage green design inspired by befikar.ai.
 
 **Repository:** https://github.com/sanjaybhargava/b2b
+**Live Site:** Deployed on Railway (auto-deploys from main branch)
+**Railway Project:** tender vibrancy
 
 ---
 
 ## What We Built
 
 ### 1. **Homepage** (`/app/page.tsx`)
-- **Hero Section**: Bold headline with comparison image, sage green accents
-- **Value Proposition**: 3 benefits with icons (Amplified Intelligence, Clear Explanations, Smart Monitoring)
-- **Credibility Section**: "Built by advisors, for advisors"
-- **Final CTA**: Emerald gradient background with call-to-action
+
+**Section 1: Hero Banner** (Sage Green Background)
+- Headline: "Top-tier wealth managers will use AI" (green) + "The rest will fall behind" (black)
+- Subheadline: "Our AI powered intelligence is fast, accurate and can be customised using advisor's secret sauce. Designed to let you focus on advice, not admin."
+- CTA Button: "Book a Demo"
+- Background: Light sage green (`bg-emerald-50`)
+
+**Section 2: Visual Comparison** (White Background)
+- Heading: "See the difference"
+- Comparison image showing "Without AI vs With AI"
+- Clean white background
+
+**Section 3: Value Proposition** (Sage Green Background)
+- Heading: "Why Top Advisors Choose Us"
+- 3 benefits with icons:
+  - Amplified Intelligence
+  - Clear Explanations
+  - Smart Monitoring
+
+**Section 4: Built by Experts** (White Background)
+- Heading: "Built by Experts, for Experts"
+- Content: Real-time insights, precision, ₹2,400 Cr in assets under monitoring
+- No badge/initiative text
+
+**Section 5: Final CTA** (Sage Green Background)
+- Heading: "Ready to see the difference?"
+- Subtext: "Join the advisors who are staying ahead with AI"
+- CTA Button: "Book a Demo"
 
 ### 2. **Demo Booking Page** (`/app/demo/page.tsx`)
 - Full form with validation
@@ -35,8 +61,23 @@ Built a B2B website for wealth management advisors (Banks, MFDs, RIAs) using Nex
 - `/app/privacy/page.tsx` - Privacy Policy
 
 ### 4. **Components**
-- **Navigation** (`/components/Navigation.tsx`): Sticky header, transparent then solid with blur on scroll, hamburger menu
-- **Footer** (`/components/Footer.tsx`): Dark gray with contact info, quick links, legal links
+
+**Navigation** (`/components/Navigation.tsx`)
+- Fixed white background (always solid)
+- Logo: "Bharosa Technoserve"
+- Navigation tabs: About, Case Study, FAQ
+- CTA button: "Book a Demo"
+- Mobile: Hamburger menu with slide-in panel
+
+**Footer** (`/components/Footer.tsx`)
+- Dark gray background (`bg-gray-900`)
+- **Contact Us**:
+  - Email: prachi@bharosaclub.com
+  - Phone: +91 97838 92909
+- **Legal**:
+  - Terms and Conditions
+  - Privacy Policy
+- **Copyright**: © 2024 Bharosa Technoserve Pvt Ltd
 
 ---
 
@@ -46,9 +87,10 @@ Built a B2B website for wealth management advisors (Banks, MFDs, RIAs) using Nex
 - **Primary:** `#10b981` (emerald-600)
 - **Primary Hover:** `#059669` (emerald-700)
 - **Primary Dark:** `#047857` (emerald-800)
+- **Light Sage:** `#f0fdf4` (emerald-50) - Used for hero and CTA sections
 - **Text Primary:** `#111827` (gray-900)
 - **Text Secondary:** `#6b7280` (gray-500)
-- **Background Gray:** `#f9fafb` (gray-50)
+- **Background White:** `#FFFFFF`
 
 ### Typography
 - **Font:** Inter (400, 600, 700 weights)
@@ -92,21 +134,23 @@ Initial setup used **Tailwind CSS v4** (beta/unstable) which caused styles to no
 
 ---
 
-## Current Status
+## Current Status (December 12, 2025)
 
-✅ **Working:** Dev server running at http://localhost:3000
-✅ **Styles:** All Tailwind CSS classes rendering properly
-✅ **Responsive:** Mobile-first design, works on all screen sizes
-✅ **Navigation:** Sticky header with mobile hamburger menu
-✅ **Forms:** Demo form with validation working
-✅ **Images:** Comparison image displaying correctly
+✅ **Development:** Working locally at http://localhost:3000
+✅ **Production:** Deployed on Railway (auto-deploys from GitHub main branch)
+✅ **Design:** Complete sage green color scheme with alternating white/green sections
+✅ **Navigation:** White header with Case Study tab added
+✅ **Content:** Hero section, value proposition, and expert section completed
+✅ **Footer:** Simplified with contact info (prachi@bharosaclub.com, +91 97838 92909)
+✅ **Forms:** Demo booking form with validation
+✅ **Responsive:** Mobile-first design, tested on all screen sizes
 
-⚠️ **Placeholders to Fill:**
-- Value Proposition heading (Section 2)
-- Company verbiage (Section 3)
-- Contact information (Footer)
+⚠️ **Pages to Complete:**
 - About page content
+- Case Study page (new tab, needs content)
 - FAQ content
+- Terms of Service content
+- Privacy Policy content
 
 ---
 
@@ -151,15 +195,29 @@ npm run build
 npm start
 ```
 
+### Deploy to Railway
+Deployment is automatic:
+1. Commit changes to git
+2. Push to GitHub: `git push origin main`
+3. Railway automatically detects the push and redeploys
+4. Check Railway dashboard for build logs and live URL
+
+**Note:** If git push fails with HTTP 400 error, increase buffer size:
+```bash
+git config --global http.postBuffer 524288000
+git push origin main
+```
+
 ---
 
 ## Next Steps / TODO
 
 ### Content
-- [ ] Replace [PLACEHOLDER] text in Section 2 (Value Proposition heading)
-- [ ] Add company description in Section 3
-- [ ] Fill in contact info (email, phone, address) in Footer
+- [x] ~~Replace placeholder text in Value Proposition section~~
+- [x] ~~Add company description in Expert section~~
+- [x] ~~Fill in contact info in Footer~~
 - [ ] Write About page content
+- [ ] Create Case Study page content (new)
 - [ ] Create FAQ questions and answers
 - [ ] Add Terms of Service content
 - [ ] Add Privacy Policy content
@@ -189,11 +247,40 @@ npm start
 
 ---
 
+## Deployment History
+
+### December 12, 2025 - Major Design Update & Railway Deployment
+**Changes Made:**
+- Restructured hero section: White → Sage green background
+- Split headline colors: Green for "Top-tier wealth managers will use AI", Black for "The rest will fall behind"
+- Updated subheadline with AI intelligence messaging
+- Added "Case Study" navigation tab
+- Changed navigation to solid white background (removed transparency)
+- Moved visual comparison to separate white background section
+- Updated "Built by Experts, for Experts" content with ₹2,400 Cr assets info
+- Changed final CTA section to sage green background
+- Simplified footer to only Contact Us and Legal sections
+- **Deployed to Railway** - Connected GitHub repo, auto-deploy enabled
+
+**Technical Notes:**
+- Fixed git push issue by increasing http.postBuffer to 524MB (comparison.png was 1.3MB)
+- Railway auto-deploys on every push to main branch
+- Build time: ~2-3 minutes
+
+### December 11, 2025 - Initial Setup
+- Fixed Tailwind CSS v4 → v3.4.17 downgrade issue
+- Created initial page structure and components
+- Set up GitHub repository
+
 ## Important Notes
 
 1. **Advisory project is on pause** - Located at `/Users/sanjaybhargava/befikar-advisory`
 2. **This is separate** - B2B project is independent at `/Users/sanjaybhargava/b2b`
-3. **Git branches** - Currently on `main` branch, pushed to https://github.com/sanjaybhargava/b2b
+3. **Git & Deployment:**
+   - Branch: `main`
+   - Repository: https://github.com/sanjaybhargava/b2b
+   - Hosting: Railway (auto-deploy from main)
+   - Push with: `git push origin main`
 4. **Team can clone:** `git clone https://github.com/sanjaybhargava/b2b.git`
 
 ---
@@ -208,4 +295,14 @@ If you need to modify anything, remember:
 
 ---
 
-**Session End:** Website structure complete, styling working, ready for content population.
+## Key Design Decisions
+
+1. **Alternating Backgrounds:** Sage green and white sections create visual rhythm
+2. **Headline Split Colors:** Green for positive statement, black for contrasting warning
+3. **Solid White Navigation:** Ensures readability over any section background
+4. **Simplified Footer:** Focus on essential contact and legal info only
+5. **Content-First Hero:** Verbiage comes first, visual comparison in separate section below
+
+---
+
+**Current Status:** Website design complete, deployed to production, ready for page content development.
