@@ -217,7 +217,7 @@ export default function FAQPage() {
         },
         {
           question: "Is there a free trial?",
-          answer: "Yes. We offer a free Portfolio Review Report so you can experience the platform before paying."
+          answer: "We offer one free Portfolio Review Report."
         }
       ]
     },
