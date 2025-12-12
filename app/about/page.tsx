@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
@@ -116,10 +117,14 @@ export default function AboutPage() {
               {/* Sanjay Bhargava */}
               <div className="bg-emerald-50 rounded-2xl p-8 hover:shadow-lg transition-shadow">
                 <div className="flex flex-col items-center text-center mb-6">
-                  <div className="w-32 h-32 bg-gray-300 rounded-full mb-4 flex items-center justify-center">
-                    <svg className="w-16 h-16 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                    </svg>
+                  <div className="w-32 h-32 rounded-full mb-4 overflow-hidden relative">
+                    <Image
+                      src="/sanjay.jpeg"
+                      alt="Sanjay Bhargava"
+                      width={128}
+                      height={128}
+                      className="object-cover w-full h-full"
+                    />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900">Sanjay Bhargava</h3>
                   <p className="text-emerald-600 font-semibold">Co-Founder</p>
@@ -132,10 +137,14 @@ export default function AboutPage() {
               {/* Anita Kapur Bhargava */}
               <div className="bg-emerald-50 rounded-2xl p-8 hover:shadow-lg transition-shadow">
                 <div className="flex flex-col items-center text-center mb-6">
-                  <div className="w-32 h-32 bg-gray-300 rounded-full mb-4 flex items-center justify-center">
-                    <svg className="w-16 h-16 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                    </svg>
+                  <div className="w-32 h-32 rounded-full mb-4 overflow-hidden relative">
+                    <Image
+                      src="/anita.jpeg"
+                      alt="Anita Kapur Bhargava"
+                      width={128}
+                      height={128}
+                      className="object-cover w-full h-full"
+                    />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900">Anita Kapur Bhargava</h3>
                   <p className="text-emerald-600 font-semibold">Co-Founder</p>
@@ -148,10 +157,14 @@ export default function AboutPage() {
               {/* Ujjwal Thaakar */}
               <div className="bg-emerald-50 rounded-2xl p-8 hover:shadow-lg transition-shadow">
                 <div className="flex flex-col items-center text-center mb-6">
-                  <div className="w-32 h-32 bg-gray-300 rounded-full mb-4 flex items-center justify-center">
-                    <svg className="w-16 h-16 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                    </svg>
+                  <div className="w-32 h-32 rounded-full mb-4 overflow-hidden relative">
+                    <Image
+                      src="/ujjwal.jpeg"
+                      alt="Ujjwal Thaakar"
+                      width={128}
+                      height={128}
+                      className="object-cover w-full h-full"
+                    />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900">Ujjwal Thaakar</h3>
                   <p className="text-emerald-600 font-semibold">Co-Founder & CEO</p>
@@ -164,10 +177,14 @@ export default function AboutPage() {
               {/* Sahil Bhargava */}
               <div className="bg-emerald-50 rounded-2xl p-8 hover:shadow-lg transition-shadow">
                 <div className="flex flex-col items-center text-center mb-6">
-                  <div className="w-32 h-32 bg-gray-300 rounded-full mb-4 flex items-center justify-center">
-                    <svg className="w-16 h-16 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                    </svg>
+                  <div className="w-32 h-32 rounded-full mb-4 overflow-hidden relative">
+                    <Image
+                      src="/sahil.jpeg"
+                      alt="Sahil Bhargava"
+                      width={128}
+                      height={128}
+                      className="object-cover w-full h-full"
+                    />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900">Sahil Bhargava</h3>
                   <p className="text-emerald-600 font-semibold">Co-Founder & Chairman</p>
