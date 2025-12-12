@@ -25,28 +25,6 @@ export default function FAQPage() {
 
   const faqSections: FAQSection[] = [
     {
-      title: "Data Security & Privacy",
-      icon: "🔐",
-      faqs: [
-        {
-          question: "Is my clients' data safe with Bharosa?",
-          answer: "Yes. Client data security is our highest priority. All files are processed in a secure, encrypted environment. Access is restricted, logged, and monitored."
-        },
-        {
-          question: "Do you sign a legal agreement?",
-          answer: "Absolutely. We sign a formal legal agreement with every partner before any data exchange. This clearly defines confidentiality, data handling, and deletion protocols."
-        },
-        {
-          question: "Do you store any client data?",
-          answer: "By default, no. We delete the uploaded data immediately after generating your report. We only retain data if you specifically request iterations or edits on the same report. Once your revisions are complete, the data is permanently deleted."
-        },
-        {
-          question: "How long do you keep my data if I request iterations?",
-          answer: "Only for the duration of the iteration process (4 business days). Once you confirm the final report, we delete everything within 24 hours."
-        }
-      ]
-    },
-    {
       title: "Product & Features",
       icon: "📊",
       faqs: [
@@ -117,6 +95,28 @@ export default function FAQPage() {
               </ul>
             </div>
           )
+        }
+      ]
+    },
+    {
+      title: "Data Security & Privacy",
+      icon: "🔐",
+      faqs: [
+        {
+          question: "Is my clients' data safe with Bharosa?",
+          answer: "Yes. Client data security is our highest priority. All files are processed in a secure, encrypted environment. Access is restricted, logged, and monitored."
+        },
+        {
+          question: "Do you sign a legal agreement?",
+          answer: "Absolutely. We sign a formal legal agreement with every partner before any data exchange. This clearly defines confidentiality, data handling, and deletion protocols."
+        },
+        {
+          question: "Do you store any client data?",
+          answer: "By default, no. We delete the uploaded data immediately after generating your report. We only retain data if you specifically request iterations or edits on the same report. Once your revisions are complete, the data is permanently deleted."
+        },
+        {
+          question: "How long do you keep my data if I request iterations?",
+          answer: "Only for the duration of the iteration process (4 business days). Once you confirm the final report, we delete everything within 24 hours."
         }
       ]
     },
