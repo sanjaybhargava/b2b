@@ -28,17 +28,11 @@ export default function RequestsPage() {
   ]);
   const [freeformInstructions, setFreeformInstructions] = useState("");
 
-  // Portfolio Restructuring 2 form state
-  const [restructuring2File, setRestructuring2File] = useState<File | null>(null);
-  const [restructuring2FileType, setRestructuring2FileType] = useState("CAS");
-  const [restructuring2Password, setRestructuring2Password] = useState("");
+  // Portfolio Restructuring 2 form state (no file upload needed)
   const [prompts2, setPrompts2] = useState(["", "", "", "", ""]);
   const [freeformInstructions2, setFreeformInstructions2] = useState("");
 
-  // Portfolio Restructuring 3 form state
-  const [restructuring3File, setRestructuring3File] = useState<File | null>(null);
-  const [restructuring3FileType, setRestructuring3FileType] = useState("CAS");
-  const [restructuring3Password, setRestructuring3Password] = useState("");
+  // Portfolio Restructuring 3 form state (no file upload needed)
   const [prompts3, setPrompts3] = useState(["", "", "", "", ""]);
   const [freeformInstructions3, setFreeformInstructions3] = useState("");
 
@@ -72,10 +66,6 @@ export default function RequestsPage() {
 
   const handleRestructuring2Submit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!restructuring2File || !restructuring2Password) {
-      alert("Please upload a file and enter password");
-      return;
-    }
 
     setIsSubmitting(true);
     // Simulate API call
@@ -86,10 +76,6 @@ export default function RequestsPage() {
 
   const handleRestructuring3Submit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!restructuring3File || !restructuring3Password) {
-      alert("Please upload a file and enter password");
-      return;
-    }
 
     setIsSubmitting(true);
     // Simulate API call
@@ -111,10 +97,6 @@ export default function RequestsPage() {
         setReviewFile(file);
       } else if (type === "restructuring") {
         setRestructuringFile(file);
-      } else if (type === "restructuring2") {
-        setRestructuring2File(file);
-      } else if (type === "restructuring3") {
-        setRestructuring3File(file);
       }
     }
   };
@@ -425,64 +407,11 @@ export default function RequestsPage() {
         {/* Portfolio Restructuring 2 Form */}
         {activeTab === "restructuring2" && (
           <div className="bg-white rounded-2xl shadow-lg p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Upload Portfolio for Restructuring 2</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Portfolio Restructuring 2</h2>
+            <p className="text-gray-600 mb-8">
+              Enter your custom restructuring instructions below. No file upload needed for this template.
+            </p>
             <form onSubmit={handleRestructuring2Submit} className="space-y-6">
-              {/* File Type Selector */}
-              <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">
-                  File Type <span className="text-red-500">*</span>
-                </label>
-                <select
-                  value={restructuring2FileType}
-                  onChange={(e) => setRestructuring2FileType(e.target.value)}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
-                  required
-                >
-                  <option value="CAS">CAS (Preferred)</option>
-                  <option value="NSDL">NSDL</option>
-                  <option value="CDSL">CDSL</option>
-                </select>
-              </div>
-
-              {/* File Upload */}
-              <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">
-                  Upload File (PDF only) <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="file"
-                  accept=".pdf"
-                  onChange={(e) => handleFileChange(e, "restructuring2")}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-emerald-50 file:text-emerald-600 file:font-semibold hover:file:bg-emerald-100 file:cursor-pointer"
-                  required
-                />
-                {restructuring2File && (
-                  <p className="text-sm text-gray-600 mt-2">Selected: {restructuring2File.name}</p>
-                )}
-              </div>
-
-              {/* Password */}
-              <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">
-                  File Password <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="password"
-                  value={restructuring2Password}
-                  onChange={(e) => setRestructuring2Password(e.target.value)}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
-                  placeholder="Enter file password"
-                  required
-                />
-              </div>
-
-              {/* Divider */}
-              <div className="border-t border-gray-200 pt-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Restructuring Instructions</h3>
-                <p className="text-gray-600 mb-6">
-                  Enter your custom restructuring instructions below.
-                </p>
-              </div>
 
               {/* 5 Empty Prompt Boxes */}
               {prompts2.map((prompt, index) => (
@@ -533,64 +462,11 @@ export default function RequestsPage() {
         {/* Portfolio Restructuring 3 Form */}
         {activeTab === "restructuring3" && (
           <div className="bg-white rounded-2xl shadow-lg p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Upload Portfolio for Restructuring 3</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Portfolio Restructuring 3</h2>
+            <p className="text-gray-600 mb-8">
+              Enter your custom restructuring instructions below. No file upload needed for this template.
+            </p>
             <form onSubmit={handleRestructuring3Submit} className="space-y-6">
-              {/* File Type Selector */}
-              <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">
-                  File Type <span className="text-red-500">*</span>
-                </label>
-                <select
-                  value={restructuring3FileType}
-                  onChange={(e) => setRestructuring3FileType(e.target.value)}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
-                  required
-                >
-                  <option value="CAS">CAS (Preferred)</option>
-                  <option value="NSDL">NSDL</option>
-                  <option value="CDSL">CDSL</option>
-                </select>
-              </div>
-
-              {/* File Upload */}
-              <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">
-                  Upload File (PDF only) <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="file"
-                  accept=".pdf"
-                  onChange={(e) => handleFileChange(e, "restructuring3")}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-emerald-50 file:text-emerald-600 file:font-semibold hover:file:bg-emerald-100 file:cursor-pointer"
-                  required
-                />
-                {restructuring3File && (
-                  <p className="text-sm text-gray-600 mt-2">Selected: {restructuring3File.name}</p>
-                )}
-              </div>
-
-              {/* Password */}
-              <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">
-                  File Password <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="password"
-                  value={restructuring3Password}
-                  onChange={(e) => setRestructuring3Password(e.target.value)}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
-                  placeholder="Enter file password"
-                  required
-                />
-              </div>
-
-              {/* Divider */}
-              <div className="border-t border-gray-200 pt-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Restructuring Instructions</h3>
-                <p className="text-gray-600 mb-6">
-                  Enter your custom restructuring instructions below.
-                </p>
-              </div>
 
               {/* 5 Empty Prompt Boxes */}
               {prompts3.map((prompt, index) => (
