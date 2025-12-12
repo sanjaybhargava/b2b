@@ -1,13 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, ReactNode } from "react";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
 interface FAQ {
   question: string;
-  answer: string | JSX.Element;
+  answer: string | ReactNode;
 }
 
 interface FAQSection {
