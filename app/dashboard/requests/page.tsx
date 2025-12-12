@@ -3,7 +3,7 @@
 import { useState, FormEvent } from "react";
 import Link from "next/link";
 
-type ReportType = "review" | "restructuring";
+type ReportType = "review" | "restructuring" | "restructuring2" | "restructuring3";
 
 export default function RequestsPage() {
   const [activeTab, setActiveTab] = useState<ReportType>("review");
@@ -15,18 +15,32 @@ export default function RequestsPage() {
   const [reviewFileType, setReviewFileType] = useState("CAS");
   const [reviewPassword, setReviewPassword] = useState("");
 
-  // Portfolio Restructuring form state
+  // Portfolio Restructuring 1 form state
   const [restructuringFile, setRestructuringFile] = useState<File | null>(null);
   const [restructuringFileType, setRestructuringFileType] = useState("CAS");
   const [restructuringPassword, setRestructuringPassword] = useState("");
   const [prompts, setPrompts] = useState([
-    "Review current asset allocation and suggest optimal equity-debt-gold mix based on risk profile",
-    "Identify underperforming funds and recommend suitable replacements with better track records",
-    "Analyze portfolio concentration risk and suggest diversification across sectors and market caps",
-    "Evaluate tax efficiency and recommend tax-loss harvesting or fund switching opportunities",
-    "Assess rebalancing needs and provide specific action items with rationale"
+    "EXAMPLE 1: Basic Asset Allocation Fix\nClient is 45, moderate risk.\nCurrent portfolio is 90% equity which is too aggressive for his age.\nI want asset allocation to be:\nEquity: 65%\nDebt: 30%\nLiquid: 5%\nKeep funds capped at 10. Show me which funds to exit and what to buy for debt. Tax-efficient exits only.",
+    "EXAMPLE 2: Equity Structure Cleanup\nDon't touch the debt portion — that's fine.\nOnly restructure the equity part.\nI want:\nLarge cap: 50%\nMid cap: 30%\nSmall cap: 20%\nClient currently has too many large cap funds and no small cap. Maximum 6 equity funds in final portfolio. All funds should beat benchmark on 3-year basis. Show before-after comparison.",
+    "EXAMPLE 3: Active-Passive Mix Change\nClient's portfolio is 100% active funds.\nI want to move to 70:30 active-passive mix.\nUse passive (index funds) for large cap. Keep active for mid cap and small cap.\nSuggest which large cap active funds to exit. Recommend Nifty 50 or Nifty Next 50 index funds. Show expense ratio savings from this shift.",
+    "EXAMPLE 4: Thematic Bet — Infra Focus\nClient wants to bet on infrastructure theme for next 5 years.\nCurrent portfolio has no sectoral exposure.\nI want to add 15% allocation to infra — either infra index fund or active infra fund.\nRest of equity should remain diversified:\nLarge cap: 45%\nMid cap: 25%\nSmall cap: 15%\nReduce from existing large cap funds to make room for infra. Show which funds to trim and by how much.",
+    "EXAMPLE 5: Hybrid Funds Cleanup\nClient has 4 hybrid funds which I don't like.\nI want to remove all hybrid funds and split into pure equity and pure debt.\nKeep the same overall equity-debt ratio as today — just cleaner structure.\nExit hybrids tax-efficiently — show breakeven for each. Only exit where it makes sense. Cap total funds at 10 after restructuring."
   ]);
   const [freeformInstructions, setFreeformInstructions] = useState("");
+
+  // Portfolio Restructuring 2 form state
+  const [restructuring2File, setRestructuring2File] = useState<File | null>(null);
+  const [restructuring2FileType, setRestructuring2FileType] = useState("CAS");
+  const [restructuring2Password, setRestructuring2Password] = useState("");
+  const [prompts2, setPrompts2] = useState(["", "", "", "", ""]);
+  const [freeformInstructions2, setFreeformInstructions2] = useState("");
+
+  // Portfolio Restructuring 3 form state
+  const [restructuring3File, setRestructuring3File] = useState<File | null>(null);
+  const [restructuring3FileType, setRestructuring3FileType] = useState("CAS");
+  const [restructuring3Password, setRestructuring3Password] = useState("");
+  const [prompts3, setPrompts3] = useState(["", "", "", "", ""]);
+  const [freeformInstructions3, setFreeformInstructions3] = useState("");
 
   const handleReviewSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -56,6 +70,34 @@ export default function RequestsPage() {
     setIsSubmitting(false);
   };
 
+  const handleRestructuring2Submit = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!restructuring2File || !restructuring2Password) {
+      alert("Please upload a file and enter password");
+      return;
+    }
+
+    setIsSubmitting(true);
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    setIsSubmitted(true);
+    setIsSubmitting(false);
+  };
+
+  const handleRestructuring3Submit = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!restructuring3File || !restructuring3Password) {
+      alert("Please upload a file and enter password");
+      return;
+    }
+
+    setIsSubmitting(true);
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    setIsSubmitted(true);
+    setIsSubmitting(false);
+  };
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>, type: ReportType) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -67,8 +109,12 @@ export default function RequestsPage() {
       }
       if (type === "review") {
         setReviewFile(file);
-      } else {
+      } else if (type === "restructuring") {
         setRestructuringFile(file);
+      } else if (type === "restructuring2") {
+        setRestructuring2File(file);
+      } else if (type === "restructuring3") {
+        setRestructuring3File(file);
       }
     }
   };
@@ -77,6 +123,18 @@ export default function RequestsPage() {
     const newPrompts = [...prompts];
     newPrompts[index] = value;
     setPrompts(newPrompts);
+  };
+
+  const handlePrompt2Change = (index: number, value: string) => {
+    const newPrompts = [...prompts2];
+    newPrompts[index] = value;
+    setPrompts2(newPrompts);
+  };
+
+  const handlePrompt3Change = (index: number, value: string) => {
+    const newPrompts = [...prompts3];
+    newPrompts[index] = value;
+    setPrompts3(newPrompts);
   };
 
   if (isSubmitted) {
@@ -128,10 +186,10 @@ export default function RequestsPage() {
         {/* Tabs */}
         <div className="mb-8">
           <div className="border-b border-gray-200">
-            <div className="flex gap-8">
+            <div className="flex gap-4 overflow-x-auto">
               <button
                 onClick={() => setActiveTab("review")}
-                className={`pb-4 px-2 font-semibold text-lg transition-colors relative ${
+                className={`pb-4 px-3 font-semibold text-base whitespace-nowrap transition-colors relative ${
                   activeTab === "review"
                     ? "text-emerald-600"
                     : "text-gray-500 hover:text-gray-700"
@@ -144,14 +202,40 @@ export default function RequestsPage() {
               </button>
               <button
                 onClick={() => setActiveTab("restructuring")}
-                className={`pb-4 px-2 font-semibold text-lg transition-colors relative ${
+                className={`pb-4 px-3 font-semibold text-base whitespace-nowrap transition-colors relative ${
                   activeTab === "restructuring"
                     ? "text-emerald-600"
                     : "text-gray-500 hover:text-gray-700"
                 }`}
               >
-                Portfolio Restructuring
+                Portfolio Restructuring 1
                 {activeTab === "restructuring" && (
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-emerald-600" />
+                )}
+              </button>
+              <button
+                onClick={() => setActiveTab("restructuring2")}
+                className={`pb-4 px-3 font-semibold text-base whitespace-nowrap transition-colors relative ${
+                  activeTab === "restructuring2"
+                    ? "text-emerald-600"
+                    : "text-gray-500 hover:text-gray-700"
+                }`}
+              >
+                Portfolio Restructuring 2
+                {activeTab === "restructuring2" && (
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-emerald-600" />
+                )}
+              </button>
+              <button
+                onClick={() => setActiveTab("restructuring3")}
+                className={`pb-4 px-3 font-semibold text-base whitespace-nowrap transition-colors relative ${
+                  activeTab === "restructuring3"
+                    ? "text-emerald-600"
+                    : "text-gray-500 hover:text-gray-700"
+                }`}
+              >
+                Portfolio Restructuring 3
+                {activeTab === "restructuring3" && (
                   <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-emerald-600" />
                 )}
               </button>
@@ -231,7 +315,7 @@ export default function RequestsPage() {
           </div>
         )}
 
-        {/* Portfolio Restructuring Form */}
+        {/* Portfolio Restructuring 1 Form */}
         {activeTab === "restructuring" && (
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Upload Portfolio for Restructuring</h2>
@@ -289,7 +373,7 @@ export default function RequestsPage() {
               <div className="border-t border-gray-200 pt-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Restructuring Instructions</h3>
                 <p className="text-gray-600 mb-6">
-                  Customize the prompts below to guide the AI analysis. Edit any prompt to match your specific requirements.
+                  Customize the examples below to guide the AI analysis. Edit any example to match your specific requirements.
                 </p>
               </div>
 
@@ -297,13 +381,13 @@ export default function RequestsPage() {
               {prompts.map((prompt, index) => (
                 <div key={index}>
                   <label className="block text-sm font-semibold text-gray-900 mb-2">
-                    Instruction {index + 1}
+                    Example {index + 1}
                   </label>
                   <textarea
                     value={prompt}
                     onChange={(e) => handlePromptChange(index, e.target.value)}
-                    rows={3}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all resize-none"
+                    rows={6}
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all resize-none font-mono text-sm"
                   />
                 </div>
               ))}
@@ -316,6 +400,222 @@ export default function RequestsPage() {
                 <textarea
                   value={freeformInstructions}
                   onChange={(e) => setFreeformInstructions(e.target.value)}
+                  rows={4}
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all resize-none"
+                  placeholder="Add any additional instructions or specific requirements for the portfolio restructuring analysis..."
+                />
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className={`w-full px-8 py-4 bg-emerald-600 text-white rounded-xl text-lg font-semibold transition-all duration-300 shadow-lg ${
+                  isSubmitting
+                    ? "opacity-50 cursor-not-allowed"
+                    : "hover:bg-emerald-700 hover:shadow-xl transform hover:-translate-y-0.5"
+                }`}
+              >
+                {isSubmitting ? "Submitting..." : "Submit for Restructuring"}
+              </button>
+            </form>
+          </div>
+        )}
+
+        {/* Portfolio Restructuring 2 Form */}
+        {activeTab === "restructuring2" && (
+          <div className="bg-white rounded-2xl shadow-lg p-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Upload Portfolio for Restructuring 2</h2>
+            <form onSubmit={handleRestructuring2Submit} className="space-y-6">
+              {/* File Type Selector */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  File Type <span className="text-red-500">*</span>
+                </label>
+                <select
+                  value={restructuring2FileType}
+                  onChange={(e) => setRestructuring2FileType(e.target.value)}
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+                  required
+                >
+                  <option value="CAS">CAS (Preferred)</option>
+                  <option value="NSDL">NSDL</option>
+                  <option value="CDSL">CDSL</option>
+                </select>
+              </div>
+
+              {/* File Upload */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  Upload File (PDF only) <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="file"
+                  accept=".pdf"
+                  onChange={(e) => handleFileChange(e, "restructuring2")}
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-emerald-50 file:text-emerald-600 file:font-semibold hover:file:bg-emerald-100 file:cursor-pointer"
+                  required
+                />
+                {restructuring2File && (
+                  <p className="text-sm text-gray-600 mt-2">Selected: {restructuring2File.name}</p>
+                )}
+              </div>
+
+              {/* Password */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  File Password <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="password"
+                  value={restructuring2Password}
+                  onChange={(e) => setRestructuring2Password(e.target.value)}
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+                  placeholder="Enter file password"
+                  required
+                />
+              </div>
+
+              {/* Divider */}
+              <div className="border-t border-gray-200 pt-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Restructuring Instructions</h3>
+                <p className="text-gray-600 mb-6">
+                  Enter your custom restructuring instructions below.
+                </p>
+              </div>
+
+              {/* 5 Empty Prompt Boxes */}
+              {prompts2.map((prompt, index) => (
+                <div key={index}>
+                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                    Instruction {index + 1}
+                  </label>
+                  <textarea
+                    value={prompt}
+                    onChange={(e) => handlePrompt2Change(index, e.target.value)}
+                    rows={6}
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all resize-none"
+                    placeholder="Enter your custom instruction here..."
+                  />
+                </div>
+              ))}
+
+              {/* Freeform Instructions */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  Additional Instructions (Optional)
+                </label>
+                <textarea
+                  value={freeformInstructions2}
+                  onChange={(e) => setFreeformInstructions2(e.target.value)}
+                  rows={4}
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all resize-none"
+                  placeholder="Add any additional instructions or specific requirements for the portfolio restructuring analysis..."
+                />
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className={`w-full px-8 py-4 bg-emerald-600 text-white rounded-xl text-lg font-semibold transition-all duration-300 shadow-lg ${
+                  isSubmitting
+                    ? "opacity-50 cursor-not-allowed"
+                    : "hover:bg-emerald-700 hover:shadow-xl transform hover:-translate-y-0.5"
+                }`}
+              >
+                {isSubmitting ? "Submitting..." : "Submit for Restructuring"}
+              </button>
+            </form>
+          </div>
+        )}
+
+        {/* Portfolio Restructuring 3 Form */}
+        {activeTab === "restructuring3" && (
+          <div className="bg-white rounded-2xl shadow-lg p-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Upload Portfolio for Restructuring 3</h2>
+            <form onSubmit={handleRestructuring3Submit} className="space-y-6">
+              {/* File Type Selector */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  File Type <span className="text-red-500">*</span>
+                </label>
+                <select
+                  value={restructuring3FileType}
+                  onChange={(e) => setRestructuring3FileType(e.target.value)}
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+                  required
+                >
+                  <option value="CAS">CAS (Preferred)</option>
+                  <option value="NSDL">NSDL</option>
+                  <option value="CDSL">CDSL</option>
+                </select>
+              </div>
+
+              {/* File Upload */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  Upload File (PDF only) <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="file"
+                  accept=".pdf"
+                  onChange={(e) => handleFileChange(e, "restructuring3")}
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-emerald-50 file:text-emerald-600 file:font-semibold hover:file:bg-emerald-100 file:cursor-pointer"
+                  required
+                />
+                {restructuring3File && (
+                  <p className="text-sm text-gray-600 mt-2">Selected: {restructuring3File.name}</p>
+                )}
+              </div>
+
+              {/* Password */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  File Password <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="password"
+                  value={restructuring3Password}
+                  onChange={(e) => setRestructuring3Password(e.target.value)}
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+                  placeholder="Enter file password"
+                  required
+                />
+              </div>
+
+              {/* Divider */}
+              <div className="border-t border-gray-200 pt-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Restructuring Instructions</h3>
+                <p className="text-gray-600 mb-6">
+                  Enter your custom restructuring instructions below.
+                </p>
+              </div>
+
+              {/* 5 Empty Prompt Boxes */}
+              {prompts3.map((prompt, index) => (
+                <div key={index}>
+                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                    Instruction {index + 1}
+                  </label>
+                  <textarea
+                    value={prompt}
+                    onChange={(e) => handlePrompt3Change(index, e.target.value)}
+                    rows={6}
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all resize-none"
+                    placeholder="Enter your custom instruction here..."
+                  />
+                </div>
+              ))}
+
+              {/* Freeform Instructions */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  Additional Instructions (Optional)
+                </label>
+                <textarea
+                  value={freeformInstructions3}
+                  onChange={(e) => setFreeformInstructions3(e.target.value)}
                   rows={4}
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all resize-none"
                   placeholder="Add any additional instructions or specific requirements for the portfolio restructuring analysis..."
