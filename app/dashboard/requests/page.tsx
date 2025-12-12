@@ -30,12 +30,10 @@ export default function RequestsPage() {
   const [freeformInstructions, setFreeformInstructions] = useState("");
 
   // Portfolio Restructuring 2 form state (no file upload needed)
-  const [prompts2, setPrompts2] = useState(["", "", "", "", ""]);
-  const [freeformInstructions2, setFreeformInstructions2] = useState("");
+  const [iteration2Instruction, setIteration2Instruction] = useState("");
 
   // Portfolio Restructuring 3 form state (no file upload needed)
-  const [prompts3, setPrompts3] = useState(["", "", "", "", ""]);
-  const [freeformInstructions3, setFreeformInstructions3] = useState("");
+  const [iteration3Instruction, setIteration3Instruction] = useState("");
 
   const handleReviewSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -106,18 +104,6 @@ export default function RequestsPage() {
     const newPrompts = [...prompts];
     newPrompts[index] = value;
     setPrompts(newPrompts);
-  };
-
-  const handlePrompt2Change = (index: number, value: string) => {
-    const newPrompts = [...prompts2];
-    newPrompts[index] = value;
-    setPrompts2(newPrompts);
-  };
-
-  const handlePrompt3Change = (index: number, value: string) => {
-    const newPrompts = [...prompts3];
-    newPrompts[index] = value;
-    setPrompts3(newPrompts);
   };
 
   if (isSubmitted) {
@@ -429,37 +415,22 @@ export default function RequestsPage() {
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Portfolio Restructuring 2</h2>
             <p className="text-gray-600 mb-8">
-              Enter your custom restructuring instructions below. No file upload needed for this template.
+              Enter your iteration 2 restructuring instructions below. No file upload needed for this iteration.
             </p>
             <form onSubmit={handleRestructuring2Submit} className="space-y-6">
 
-              {/* 5 Empty Prompt Boxes */}
-              {prompts2.map((prompt, index) => (
-                <div key={index}>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
-                    Instruction {index + 1}
-                  </label>
-                  <textarea
-                    value={prompt}
-                    onChange={(e) => handlePrompt2Change(index, e.target.value)}
-                    rows={6}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all resize-none"
-                    placeholder="Enter your custom instruction here..."
-                  />
-                </div>
-              ))}
-
-              {/* Freeform Instructions */}
+              {/* Iteration 2 Instruction */}
               <div>
                 <label className="block text-sm font-semibold text-gray-900 mb-2">
-                  Additional Instructions (Optional)
+                  Iteration 2 Instruction <span className="text-red-500">*</span>
                 </label>
                 <textarea
-                  value={freeformInstructions2}
-                  onChange={(e) => setFreeformInstructions2(e.target.value)}
-                  rows={4}
+                  value={iteration2Instruction}
+                  onChange={(e) => setIteration2Instruction(e.target.value)}
+                  rows={12}
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all resize-none"
-                  placeholder="Add any additional instructions or specific requirements for the portfolio restructuring analysis..."
+                  placeholder="Enter your iteration 2 restructuring instructions here..."
+                  required
                 />
               </div>
 
@@ -484,37 +455,22 @@ export default function RequestsPage() {
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Portfolio Restructuring 3</h2>
             <p className="text-gray-600 mb-8">
-              Enter your custom restructuring instructions below. No file upload needed for this template.
+              Enter your iteration 3 restructuring instructions below. No file upload needed for this iteration.
             </p>
             <form onSubmit={handleRestructuring3Submit} className="space-y-6">
 
-              {/* 5 Empty Prompt Boxes */}
-              {prompts3.map((prompt, index) => (
-                <div key={index}>
-                  <label className="block text-sm font-semibold text-gray-900 mb-2">
-                    Instruction {index + 1}
-                  </label>
-                  <textarea
-                    value={prompt}
-                    onChange={(e) => handlePrompt3Change(index, e.target.value)}
-                    rows={6}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all resize-none"
-                    placeholder="Enter your custom instruction here..."
-                  />
-                </div>
-              ))}
-
-              {/* Freeform Instructions */}
+              {/* Iteration 3 Instruction */}
               <div>
                 <label className="block text-sm font-semibold text-gray-900 mb-2">
-                  Additional Instructions (Optional)
+                  Iteration 3 Instruction <span className="text-red-500">*</span>
                 </label>
                 <textarea
-                  value={freeformInstructions3}
-                  onChange={(e) => setFreeformInstructions3(e.target.value)}
-                  rows={4}
+                  value={iteration3Instruction}
+                  onChange={(e) => setIteration3Instruction(e.target.value)}
+                  rows={12}
                   className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all resize-none"
-                  placeholder="Add any additional instructions or specific requirements for the portfolio restructuring analysis..."
+                  placeholder="Enter your iteration 3 restructuring instructions here..."
+                  required
                 />
               </div>
 
