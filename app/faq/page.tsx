@@ -29,10 +29,23 @@ export default function FAQPage() {
       icon: "📊",
       faqs: [
         {
-          question: "What exactly does Bharosa do?",
+          question: "Who can use Bharosa Intelligence?",
+          answer: (
+            <div>
+              <p className="mb-2">Bharosa Intelligence is designed for:</p>
+              <ul className="list-disc pl-6 space-y-1">
+                <li>Banks</li>
+                <li>Mutual Fund Distributors</li>
+                <li>Registered Investment Advisors (RIAs)</li>
+              </ul>
+            </div>
+          )
+        },
+        {
+          question: "What exactly does Bharosa Intelligence do?",
           answer: (
             <div className="space-y-4">
-              <p>Bharosa delivers insight-led financial intelligence for wealth managers, MFDs, and RIAs.</p>
+              <p>Bharosa Intelligence delivers insight-led financial intelligence for wealth managers, MFDs, and RIAs.</p>
               <p>We analyse portfolios and generate:</p>
               <ul className="list-disc pl-6 space-y-1">
                 <li>Asset allocation insights</li>
