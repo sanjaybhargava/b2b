@@ -19,6 +19,7 @@ export default function RequestsPage() {
   const [restructuringFile, setRestructuringFile] = useState<File | null>(null);
   const [restructuringFileType, setRestructuringFileType] = useState("CAS");
   const [restructuringPassword, setRestructuringPassword] = useState("");
+  const [restructuringPan, setRestructuringPan] = useState("");
   const [prompts, setPrompts] = useState([
     "EXAMPLE 1: Basic Asset Allocation Fix\nClient is 45, moderate risk.\nCurrent portfolio is 90% equity which is too aggressive for his age.\nI want asset allocation to be:\nEquity: 65%\nDebt: 30%\nLiquid: 5%\nKeep funds capped at 10. Show me which funds to exit and what to buy for debt. Tax-efficient exits only.",
     "EXAMPLE 2: Equity Structure Cleanup\nDon't touch the debt portion — that's fine.\nOnly restructure the equity part.\nI want:\nLarge cap: 50%\nMid cap: 30%\nSmall cap: 20%\nClient currently has too many large cap funds and no small cap. Maximum 6 equity funds in final portfolio. All funds should beat benchmark on 3-year basis. Show before-after comparison.",
@@ -52,8 +53,8 @@ export default function RequestsPage() {
 
   const handleRestructuringSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!restructuringFile || !restructuringPassword) {
-      alert("Please upload a file and enter password");
+    if (!restructuringFile || !restructuringPassword || !restructuringPan) {
+      alert("Please upload a file, enter password, and provide Customer PAN");
       return;
     }
 
@@ -349,6 +350,25 @@ export default function RequestsPage() {
                   placeholder="Enter file password"
                   required
                 />
+              </div>
+
+              {/* Customer PAN */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-900 mb-2">
+                  Customer PAN <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  value={restructuringPan}
+                  onChange={(e) => setRestructuringPan(e.target.value.toUpperCase())}
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all font-mono"
+                  placeholder="AHWPB0829R"
+                  maxLength={10}
+                  pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"
+                  title="Please enter a valid PAN (e.g., AHWPB0829R)"
+                  required
+                />
+                <p className="text-xs text-gray-500 mt-1">Format: 5 letters, 4 numbers, 1 letter (e.g., AHWPB0829R)</p>
               </div>
 
               {/* Divider */}
