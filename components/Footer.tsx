@@ -47,7 +47,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="pt-8 border-t border-gray-800">
           <p className="text-sm text-gray-500 text-center">
-            © 2024 Bharosa Technoserve Pvt Ltd. All rights reserved.
+            © {new Date().getFullYear()} Bharosa Technoserve Pvt Ltd. All rights reserved.
           </p>
         </div>
       </div>

@@ -94,7 +94,7 @@ export default function Home() {
 
             <div className="grid md:grid-cols-3 gap-12">
               {/* Benefit 1 */}
-              <div className="text-center space-y-4 p-8 rounded-2xl hover:bg-gray-50 transition-colors">
+              <div className="text-center space-y-4 p-8 rounded-2xl hover:bg-white hover:shadow-md transition-all duration-200">
                 <div className="w-16 h-16 bg-emerald-100 rounded-xl flex items-center justify-center mx-auto">
                   <svg
                     className="w-8 h-8 text-emerald-600"
@@ -120,7 +120,7 @@ export default function Home() {
               </div>
 
               {/* Benefit 2 */}
-              <div className="text-center space-y-4 p-8 rounded-2xl hover:bg-gray-50 transition-colors">
+              <div className="text-center space-y-4 p-8 rounded-2xl hover:bg-white hover:shadow-md transition-all duration-200">
                 <div className="w-16 h-16 bg-emerald-100 rounded-xl flex items-center justify-center mx-auto">
                   <svg
                     className="w-8 h-8 text-emerald-600"
@@ -146,7 +146,7 @@ export default function Home() {
               </div>
 
               {/* Benefit 3 */}
-              <div className="text-center space-y-4 p-8 rounded-2xl hover:bg-gray-50 transition-colors">
+              <div className="text-center space-y-4 p-8 rounded-2xl hover:bg-white hover:shadow-md transition-all duration-200">
                 <div className="w-16 h-16 bg-emerald-100 rounded-xl flex items-center justify-center mx-auto">
                   <svg
                     className="w-8 h-8 text-emerald-600"

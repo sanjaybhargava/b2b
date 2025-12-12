@@ -15,6 +15,18 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen]);
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white ${
@@ -35,25 +47,25 @@ export default function Navigation() {
           <div className="hidden md:flex items-center gap-10">
             <Link
               href="/about"
-              className="text-base font-medium text-gray-600 hover:text-emerald-600 transition-colors"
+              className="text-base font-medium text-gray-600 hover:text-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 rounded-md px-2 py-1 transition-colors"
             >
               About
             </Link>
             <Link
               href="/case-study"
-              className="text-base font-medium text-gray-600 hover:text-emerald-600 transition-colors"
+              className="text-base font-medium text-gray-600 hover:text-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 rounded-md px-2 py-1 transition-colors"
             >
               Case Study
             </Link>
             <Link
               href="/faq"
-              className="text-base font-medium text-gray-600 hover:text-emerald-600 transition-colors"
+              className="text-base font-medium text-gray-600 hover:text-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 rounded-md px-2 py-1 transition-colors"
             >
               FAQ
             </Link>
             <Link
               href="/demo"
-              className="px-6 py-2.5 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 transition-all duration-200 shadow-md hover:shadow-lg"
+              className="px-6 py-2.5 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all duration-200 shadow-md hover:shadow-lg"
             >
               Book a Demo
             </Link>
@@ -90,6 +102,10 @@ export default function Navigation() {
           <div
             className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 md:hidden"
             onClick={() => setIsMenuOpen(false)}
+            role="button"
+            aria-label="Close menu"
+            tabIndex={0}
+            onKeyDown={(e) => e.key === 'Enter' && setIsMenuOpen(false)}
           />
           <div className="fixed right-0 top-20 bottom-0 w-72 bg-white z-50 shadow-2xl md:hidden transform transition-transform duration-300">
             <div className="flex flex-col p-8 gap-8">

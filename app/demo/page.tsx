@@ -16,6 +16,7 @@ export default function DemoPage() {
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -46,12 +47,15 @@ export default function DemoPage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     if (validateForm()) {
-      // For now, just show success message (no backend integration)
+      setIsSubmitting(true);
+      // Simulate API call delay (replace with actual backend call later)
+      await new Promise(resolve => setTimeout(resolve, 800));
       setIsSubmitted(true);
+      setIsSubmitting(false);
       console.log("Form submitted:", formData);
     }
   };
@@ -290,9 +294,14 @@ export default function DemoPage() {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full px-8 py-4 bg-emerald-600 text-white rounded-xl text-lg font-semibold hover:bg-emerald-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                disabled={isSubmitting}
+                className={`w-full px-8 py-4 bg-emerald-600 text-white rounded-xl text-lg font-semibold transition-all duration-300 shadow-lg ${
+                  isSubmitting
+                    ? 'opacity-50 cursor-not-allowed'
+                    : 'hover:bg-emerald-700 hover:shadow-xl transform hover:-translate-y-0.5'
+                }`}
               >
-                Submit Request
+                {isSubmitting ? 'Submitting...' : 'Submit Request'}
               </button>
             </form>
           </div>
