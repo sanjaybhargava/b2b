@@ -1,10 +1,208 @@
 "use client";
 
-import { useEffect } from "react";
-import Image from "next/image";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+
+// Accordion data
+const accordionData = [
+  {
+    id: "acquire",
+    title: "ACQUIRE",
+    rows: [
+      {
+        useCase: "Convert a skeptical prospect",
+        oldWay: '"Trust me, these are good funds"',
+        bharosa: "Upload their CAS, expose underperforming funds, show the 10-year cost of inaction—let the data do the convincing",
+        customInstructions: '"Analyze this CAS. Flag all funds underperforming benchmark for 3+ years. Show me the 10-year projection gap vs. an optimized portfolio."',
+      },
+      {
+        useCase: "Prove your edge vs. their current advisor",
+        oldWay: "Generic pitch, no proof points",
+        bharosa: "Head-to-head comparison showing exact performance gaps, overlap issues, and expense ratio drag",
+        customInstructions: '"Compare fund selections by advisor. Show CAGR, expense ratios, and underperformers for each. Highlight overlap across holdings."',
+      },
+      {
+        useCase: "Build instant credibility",
+        oldWay: "Hours preparing a proposal",
+        bharosa: "Full portfolio diagnosis in minutes—asset allocation, sector bets, fund quality, commission leakage",
+        customInstructions: '"Run full diagnostic: asset allocation, sector bets vs. Nifty 500, issuer concentration, and estimated commission leakage."',
+      },
+    ],
+  },
+  {
+    id: "grow",
+    title: "GROW",
+    rows: [
+      {
+        useCase: "Win wallet share from competing advisors",
+        oldWay: "Hope your slice performs better",
+        bharosa: "Analyze their entire CAS—including competitor portions—and prove your edge with hard numbers",
+        customInstructions: '"Split this CAS by advisor. Rank each portion by 3-year CAGR, expense ratio, and number of underperforming funds."',
+      },
+      {
+        useCase: "Turn clients into referral machines",
+        oldWay: '"Please recommend me to friends"',
+        bharosa: 'Give them bragging rights—"My advisor uses AI"—and shareable reports that make them look smart',
+        customInstructions: '"Generate a client-friendly portfolio summary with key wins, projected growth, and visual comparisons. Make it shareable."',
+      },
+    ],
+  },
+  {
+    id: "retain",
+    title: "RETAIN",
+    rows: [
+      {
+        useCase: "Catch problems before clients do",
+        oldWay: "Annual reviews (if you remember)",
+        bharosa: "Real-time alerts when any fund underperforms for 6+ months—call them before they call you angry",
+        customInstructions: "Use Monitoring tool",
+      },
+      {
+        useCase: "Save a client who's walking out",
+        oldWay: "Defensive excuses, damage control",
+        bharosa: "Own the mistake, show the system you've built to prevent it, remind them of past value delivered",
+        customInstructions: '"Pull this client\'s history. Show: panic sells prevented, risky investments avoided, tax-efficient moves made. Quantify value delivered."',
+      },
+      {
+        useCase: "Propose a fix, not just an apology",
+        oldWay: '"Let\'s wait and watch"',
+        bharosa: "Tax-smart exit recommendations with alternative fund suggestions ready to present",
+        customInstructions: '"For flagged underperformers, suggest 3 alternatives each. Recommend tax-efficient exit—prioritize LTCG units only."',
+      },
+    ],
+  },
+];
+
+function SeeTheDifferenceSection() {
+  const [openAccordion, setOpenAccordion] = useState<string | null>(null);
+
+  const toggleAccordion = (id: string) => {
+    setOpenAccordion(openAccordion === id ? null : id);
+  };
+
+  return (
+    <section className="py-20 md:py-32 px-6 bg-white">
+      <div className="max-w-6xl mx-auto space-y-12">
+        {/* Header */}
+        <div className="text-center space-y-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
+            See the Difference
+          </h2>
+          <p className="text-2xl md:text-3xl font-semibold text-emerald-600">
+            Stop guessing. Start knowing.
+          </p>
+          <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+            Your competitors are still using spreadsheets and gut feelings. You could be using AI-powered intelligence that turns data into decisions—and prospects into clients.
+          </p>
+          <p className="text-xl md:text-2xl font-semibold text-gray-900">
+            One platform. Infinite use cases.
+          </p>
+        </div>
+
+        {/* Accordions */}
+        <div className="space-y-4">
+          {accordionData.map((accordion) => (
+            <div
+              key={accordion.id}
+              className="border border-gray-200 rounded-xl overflow-hidden"
+            >
+              {/* Accordion Header */}
+              <button
+                onClick={() => toggleAccordion(accordion.id)}
+                className="w-full flex items-center justify-between px-6 py-5 bg-emerald-50 hover:bg-emerald-100 transition-colors duration-200"
+              >
+                <span className="text-xl font-bold text-emerald-700 tracking-wide">
+                  {accordion.title}
+                </span>
+                <svg
+                  className={`w-6 h-6 text-emerald-600 transition-transform duration-300 ${
+                    openAccordion === accordion.id ? "rotate-180" : ""
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+
+              {/* Accordion Content */}
+              <div
+                className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                  openAccordion === accordion.id
+                    ? "max-h-[2000px] opacity-100"
+                    : "max-h-0 opacity-0"
+                }`}
+              >
+                <div className="overflow-x-auto">
+                  <table className="w-full min-w-[800px]">
+                    <thead>
+                      <tr className="bg-gray-50 border-b border-gray-200">
+                        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 w-1/5">
+                          Use Case
+                        </th>
+                        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 w-1/5">
+                          Old Way
+                        </th>
+                        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 w-1/4">
+                          Bharosa Intelligence
+                        </th>
+                        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 w-1/3">
+                          Custom Instructions
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {accordion.rows.map((row, index) => (
+                        <tr
+                          key={index}
+                          className="border-b border-gray-100 hover:bg-gray-50"
+                        >
+                          <td className="px-4 py-4 text-sm text-gray-900 font-medium align-top">
+                            {row.useCase}
+                          </td>
+                          <td className="px-4 py-4 text-sm text-gray-500 align-top">
+                            {row.oldWay}
+                          </td>
+                          <td className="px-4 py-4 text-sm text-gray-700 align-top">
+                            {row.bharosa}
+                          </td>
+                          <td className="px-4 py-4 text-sm text-emerald-700 font-mono italic align-top">
+                            {row.customInstructions}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div className="text-center pt-8 space-y-6">
+          <p className="text-xl md:text-2xl font-semibold text-gray-900">
+            Ready to see the difference for yourself?
+          </p>
+          <Link
+            href="/demo"
+            className="inline-flex items-center justify-center px-10 py-4 bg-emerald-600 text-white rounded-xl text-lg font-semibold hover:bg-emerald-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+          >
+            Book a Demo
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export default function Home() {
   useEffect(() => {
@@ -63,27 +261,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* SECTION 2: VISUAL COMPARISON */}
-        <section className="py-20 md:py-32 px-6 bg-white">
-          <div className="max-w-4xl mx-auto text-center space-y-12">
-            {/* Heading */}
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
-              See the difference
-            </h2>
-
-            {/* Comparison Visual */}
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <Image
-                src="/comparison.png"
-                alt="Comparison of wealth management workflow without AI versus with AI-powered tools"
-                width={600}
-                height={600}
-                priority
-                className="w-full h-auto"
-              />
-            </div>
-          </div>
-        </section>
+        {/* SECTION 2: SEE THE DIFFERENCE - ACCORDIONS */}
+        <SeeTheDifferenceSection />
 
         {/* SECTION 3: VALUE PROPOSITION */}
         <section className="py-20 md:py-32 px-6 bg-emerald-50 fade-in opacity-0 translate-y-8 transition-all duration-1000">
