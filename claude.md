@@ -1,6 +1,6 @@
 # B2B Website Development Session Notes
 
-**Last Updated:** December 12, 2025
+**Last Updated:** December 13, 2025
 **Project:** Bharosa Technoserve B2B Advisory Platform
 **Location:** `/Users/sanjaybhargava/b2b`
 
@@ -26,10 +26,18 @@ Built a B2B website for wealth management advisors (Banks, MFDs, RIAs) using Nex
 - CTA Button: "Book a Demo"
 - Background: Light sage green (`bg-emerald-50`)
 
-**Section 2: Visual Comparison** (White Background)
-- Heading: "See the difference"
-- Comparison image showing "Without AI vs With AI"
-- Clean white background
+**Section 2: See the Difference - Accordions** (White Background)
+- Header: "See the Difference" + "Stop guessing. Start knowing."
+- Intro copy about AI-powered intelligence vs spreadsheets
+- Tagline: "One platform. Infinite use cases."
+- **3 Accordions** (only one open at a time, smooth slide animation):
+  - **ACQUIRE** (3 rows): Convert prospects, prove edge, build credibility
+  - **GROW** (2 rows): Win wallet share, turn clients into referral machines
+  - **RETAIN** (3 rows): Catch problems early, save walking clients, propose fixes
+- Each accordion contains a 4-column table: Use Case | Old Way | Bharosa Intelligence | Custom Instructions
+- Custom Instructions column styled as `font-mono italic text-emerald-700`
+- Tables horizontally scrollable on mobile
+- CTA: "Ready to see the difference for yourself?" + "Book a Demo" button
 
 **Section 3: Value Proposition** (Sage Green Background)
 - Heading: "Why Top Advisors Choose Us"
@@ -111,7 +119,7 @@ Built a B2B website for wealth management advisors (Banks, MFDs, RIAs) using Nex
 - **Styling:** Tailwind CSS v3.4.17 (production stable)
 - **TypeScript:** Yes
 - **Font:** Inter from Google Fonts
-- **Images:** `/public/comparison.png` (Without AI vs With AI visual)
+- **Images:** `/public/comparison.png` (archived - no longer displayed on homepage)
 
 ---
 
@@ -134,13 +142,14 @@ Initial setup used **Tailwind CSS v4** (beta/unstable) which caused styles to no
 
 ---
 
-## Current Status (December 12, 2025)
+## Current Status (December 13, 2025)
 
 ✅ **Development:** Working locally at http://localhost:3000
 ✅ **Production:** Deployed on Railway (auto-deploys from GitHub main branch)
 ✅ **Design:** Complete sage green color scheme with alternating white/green sections
 ✅ **Navigation:** White header with Case Study tab added
 ✅ **Content:** Hero section, value proposition, and expert section completed
+✅ **Accordions:** "See the Difference" section rebuilt with ACQUIRE/GROW/RETAIN accordions
 ✅ **Footer:** Simplified with contact info (prachi@bharosaclub.com, +91 97838 92909)
 ✅ **Forms:** Demo booking form with validation
 ✅ **Responsive:** Mobile-first design, tested on all screen sizes
@@ -249,6 +258,21 @@ git push origin main
 
 ## Deployment History
 
+### December 13, 2025 - See the Difference Section Rebuild
+**Changes Made:**
+- Replaced comparison.png image with accordion-based content section
+- Added header copy: "Stop guessing. Start knowing." + competitor comparison messaging
+- Created 3 interactive accordions: ACQUIRE (3 use cases), GROW (2 use cases), RETAIN (3 use cases)
+- Each accordion expands to show 4-column table with Use Case, Old Way, Bharosa Intelligence, Custom Instructions
+- Only one accordion can be open at a time (smooth 300ms slide animation)
+- Custom Instructions column styled as monospace italic in emerald green
+- Added section CTA: "Ready to see the difference for yourself?" with Book a Demo button
+- Tables horizontally scrollable on mobile for responsive design
+
+**Commit:** `c1b055b`
+
+---
+
 ### December 12, 2025 - Major Design Update & Railway Deployment
 **Changes Made:**
 - Restructured hero section: White → Sage green background
@@ -305,4 +329,4 @@ If you need to modify anything, remember:
 
 ---
 
-**Current Status:** Website design complete, deployed to production, ready for page content development.
+**Current Status:** Website design complete with interactive accordion section, deployed to production, ready for page content development.
