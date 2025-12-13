@@ -116,7 +116,7 @@ export default function FAQPage() {
       icon: "🔐",
       faqs: [
         {
-          question: "Is my clients' data safe with Bharosa?",
+          question: "Is my clients' data safe with Bharosa Intelligence?",
           answer: "Yes. Client data security is our highest priority. All files are processed in a secure, encrypted environment. Access is restricted, logged, and monitored."
         },
         {
@@ -138,7 +138,7 @@ export default function FAQPage() {
       icon: "⏱",
       faqs: [
         {
-          question: "How does Bharosa save me time?",
+          question: "How does Bharosa Intelligence save me time?",
           answer: (
             <div className="space-y-4">
               <p>Bharosa eliminates:</p>
@@ -174,7 +174,7 @@ export default function FAQPage() {
           answer: "None. If you can upload a file, you can use Bharosa."
         },
         {
-          question: "Who is Bharosa built for?",
+          question: "Who is Bharosa Intelligence built for?",
           answer: (
             <div>
               <ul className="list-disc pl-6 space-y-1">
@@ -188,7 +188,7 @@ export default function FAQPage() {
           )
         },
         {
-          question: "Can Bharosa help me with prospecting?",
+          question: "Can Bharosa Intelligence help me with prospecting?",
           answer: (
             <div>
               <p className="mb-2">Yes. Advisors use Bharosa to:</p>
@@ -202,7 +202,7 @@ export default function FAQPage() {
           )
         },
         {
-          question: "Does Bharosa give investment advice?",
+          question: "Does Bharosa Intelligence give investment advice?",
           answer: "No. We only provide analysis, intelligence, and insights. The investment decision always remains with the advisor."
         }
       ]
@@ -212,7 +212,7 @@ export default function FAQPage() {
       icon: "💰",
       faqs: [
         {
-          question: "How is Bharosa priced?",
+          question: "How is Bharosa Intelligence priced?",
           answer: "Simple: Pay per report. No subscription, no lock-ins."
         },
         {
@@ -226,7 +226,7 @@ export default function FAQPage() {
       icon: "⚖️",
       faqs: [
         {
-          question: "Is Bharosa compliant with regulations?",
+          question: "Is Bharosa Intelligence compliant with regulations?",
           answer: "Yes. Our intelligence follows a no-product-push design and supports SEBI-aligned advisory workflows."
         }
       ]

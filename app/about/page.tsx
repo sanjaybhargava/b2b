@@ -65,7 +65,7 @@ export default function AboutPage() {
 
             <div className="mt-12 p-8 bg-white rounded-2xl shadow-lg">
               <p className="text-2xl md:text-3xl font-bold text-emerald-600 text-center">
-                Bharosa is driven by creating wealth for all investors and enabling advisors to give high quality advice with minimal effort — harnessing the power of AI to accomplish this goal.
+                Bharosa is driven by creating wealth for all investors and enabling advisors to give high quality advice with minimal effort — harnessing the power of Bharosa Intelligence to accomplish this goal.
               </p>
             </div>
           </div>
@@ -204,7 +204,7 @@ export default function AboutPage() {
               Ready to Transform Your Advisory Practice?
             </h2>
             <p className="text-xl text-gray-600">
-              See how Bharosa can help you deliver exceptional value to your clients
+              See how Bharosa Intelligence can help you deliver exceptional value to your clients
             </p>
             <div className="pt-4">
               <Link

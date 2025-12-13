@@ -19,19 +19,19 @@ export default function CaseStudiesPage() {
 
   const caseStudies = [
     {
-      title: "Getting New Customers",
+      title: "Acquire",
       icon: "🎯",
       description: "Learn how advisors use Bharosa to impress prospects with instant portfolio insights and convert them into clients faster."
     },
     {
-      title: "Retaining Customers",
-      icon: "🤝",
-      description: "Discover strategies to keep clients engaged with regular, data-driven portfolio reviews that demonstrate ongoing value."
-    },
-    {
-      title: "Increase Wallet Share with Existing Customers",
+      title: "Grow",
       icon: "📈",
       description: "See how advisors identify opportunities to deepen relationships and grow AUM with existing clients using Bharosa's intelligence."
+    },
+    {
+      title: "Retain",
+      icon: "🤝",
+      description: "Discover strategies to keep clients engaged with regular, data-driven portfolio reviews that demonstrate ongoing value."
     }
   ];
 
