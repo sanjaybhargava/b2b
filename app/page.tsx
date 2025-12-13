@@ -94,7 +94,7 @@ function SeeTheDifferenceSection() {
             Stop guessing. Start knowing.
           </p>
           <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            Your competitors are still using spreadsheets and gut feelings. You could be using AI-powered intelligence that turns data into decisions—and prospects into clients.
+            Your competitors are still using spreadsheets and gut feelings. You could be using Bharosa Intelligence that turns data into decisions—and prospects into clients.
           </p>
           <p className="text-xl md:text-2xl font-semibold text-gray-900">
             One platform. Infinite use cases.
@@ -235,16 +235,16 @@ export default function Home() {
             {/* Headline */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
               <span className="text-emerald-600">
-                Top-tier wealth managers will use AI.
+                Top-tier wealth managers need an edge.
               </span>{" "}
               <span className="text-gray-900">
-                The rest will fall behind.
+                We built one.
               </span>
             </h1>
 
             {/* Subheadline */}
             <p className="text-xl md:text-2xl text-gray-600 leading-relaxed">
-              Our AI powered intelligence is fast, accurate and can be customised using advisor's secret sauce
+              The calculations are ours. The convenience is AI. The secret sauce is yours.
               <br />
               Designed to let you focus on advice, not admin.
             </p>
@@ -293,8 +293,7 @@ export default function Home() {
                   Amplified Intelligence
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Your secret sauce, amplified by AI. Maintain your unique
-                  advisory approach while eliminating repetitive tasks.
+                  You set the strategy. Our engine handles the grind.
                 </p>
               </div>
 
@@ -319,8 +318,7 @@ export default function Home() {
                   Clear Explanations
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Explain every recommendation with confidence. Built-in
-                  rationale for every insight and suggestion.
+                  Clients ask 'why?' You'll have the answer—every time.
                 </p>
               </div>
 
@@ -345,10 +343,18 @@ export default function Home() {
                   Smart Monitoring
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Monitor portfolios 24x7, act only when it matters. Intelligent
-                  alerts that respect your time.
+                  24x7 Vigilance. You define the alerts you want.
                 </p>
               </div>
+            </div>
+
+            <div className="text-center pt-8">
+              <Link
+                href="/demo"
+                className="inline-flex items-center justify-center px-10 py-4 bg-emerald-600 text-white rounded-xl text-lg font-semibold hover:bg-emerald-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              >
+                Book a Demo
+              </Link>
             </div>
           </div>
         </section>
@@ -365,6 +371,15 @@ export default function Home() {
               to client needs, market shifts, and regulatory changes. We operate with precision, as every recommendation reflects up-to-date portfolio and market data, ensuring accuracy you can trust.
               With over ₹2,400 Cr in assets already under active monitoring, advisors can start to deliver customer value from day one.
             </p>
+
+            <div className="pt-4">
+              <Link
+                href="/demo"
+                className="inline-flex items-center justify-center px-10 py-4 bg-emerald-600 text-white rounded-xl text-lg font-semibold hover:bg-emerald-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              >
+                Book a Demo
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -375,7 +390,7 @@ export default function Home() {
               Ready to see the difference?
             </h2>
             <p className="text-xl text-gray-600">
-              Join the advisors who are staying ahead with AI
+              Join the advisors who are staying ahead with Bharosa Intelligence
             </p>
             <div className="pt-4">
               <Link
