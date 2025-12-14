@@ -40,7 +40,7 @@ export default function Navigation() {
             href="/"
             className="text-xl font-bold text-gray-900 hover:text-emerald-600 transition-colors"
           >
-            Bharosa Technoserve
+            Bharosa Intelligence
           </Link>
 
           {/* Desktop Menu */}
